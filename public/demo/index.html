@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script data-require="jquery@3.0.0" data-semver="2.2.4" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <link data-require="bootstrap-css@3.3.6" data-semver="3.3.6" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" />
+  <link data-require="bootstrap@3.3.6" data-semver="3.3.6" rel="stylesheet" href="bootstrap" />
+  <script data-require="bootstrap@3.3.6" data-semver="3.3.6" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="lib/style.css" />
+  <script src="lib/script.js"></script>
+  <title>Front End Developer Test</title>
+</head>
+
+<body>
+  <div class="container">
+    <br />
+    <div class="main-login main-center">
+      <form class="form-horizontal" method="post" action="#">
+		<p id="logoutSuccessMsg">You have successfully logged out.</p>
+		<p id="messageError">Invalid user name or password, try again.</p>
+        <div class="form-group">
+          <label for="name" class="cols-sm-2 control-label">User Name</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon">
+                  <i class="fa fa-user fa" aria-hidden="true"></i>
+                </span>
+              <input type="text" class="form-control" name="name" id="name" placeholder="Enter User Name" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="cols-sm-2 control-label">Password</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon">
+                  <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                </span>
+              <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group ">
+          <button type="button" class="btn btn-primary btn-lg btn-block login-button">Login</button>
+        </div>
+      </form>
+    </div>
+    <div id="tabContainer" style="display:none;">
+      <ul class="nav nav-pills">
+        <li role="presentation" class="active" style="width: 30%;"><a href="#" id="homeTab">States</a></li>
+        <li role="presentation" style="width: 30%;"><a href="#" id="profileTab">Message </a></li>
+        <button type="button" id="logout" class="btn btn-danger  ">Logout</button>
+      </ul>
+      <hr/>
+      <div id="homeContainer">
+
+        <form class="form-inline">
+          <div class="form-group">
+            <label for="name">Sort:</label>
+            <select id="stateSort" class="form-control">
+              <option value="name">name</option>
+              <option value="abbreviation">abbreviation</option>
+              <option value="dst">dst</option>
+              <option value="most-populous-city">most-populous-city</option>
+              <option value="population">population</option>
+              <option value="square-miles">square-miles</option>
+              <option value="time-zone-1">time-zone-1</option>
+              <option value="time-zone-2">time-zone-2</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Limt">Limt:</label>
+            <input type="text" class="form-control" id="Limt" value="10">
+          </div>
+          <div class="form-group">
+            <label for="Offset">Offset:</label>
+            <input type="text" class="form-control" id="Offset" value="0">
+          </div>
+        </form>
+        <p id="maxlimit"> Max limit not more than 10</p>
+        <hr/>
+
+        <div id="home" class="tab-pane fade in active">
+          <ul class="list-group" id="homeUl">
+
+          </ul>
+        </div>
+        <div id="stateDetails">
+          <form id="stateForm">
+            <div class="form-group">
+              <label for="name">State Name:</label>
+              <input type="text" class="form-control" id="stname" readonly>
+            </div>
+            <div class="form-group">
+              <label for="capital">Capital:</label>
+              <input type="text" class="form-control" id="capital" readonly>
+            </div>
+            <div class="form-group">
+              <label for="abbreviation">Abbreviation:</label>
+              <input type="text" class="form-control" id="abbreviation" readonly>
+            </div>
+            <div class="form-group">
+              <label for="dst">Dst:</label>
+              <input type="text" class="form-control" id="dst" readonly>
+            </div>
+            <div class="form-group">
+              <label for="most-populous-city">Most Populous City:</label>
+              <input type="text" class="form-control" id="most-populous-city" readonly>
+            </div>
+            <div class="form-group">
+              <label for="population">population:</label>
+              <input type="text" class="form-control" id="population" readonly>
+            </div>
+            <div class="form-group">
+              <label for="square-miles">Square Miles:</label>
+              <input type="text" class="form-control" id="square-miles" readonly>
+            </div>
+            <div class="form-group">
+              <label for="time-zone-1">Time Zone 1:</label>
+              <input type="text" class="form-control" id="time-zone-1" readonly>
+            </div>
+            <div class="form-group">
+              <label for="time-zone-2">Time Zone 2:</label>
+              <input type="text" class="form-control" id="time-zone-2" readonly>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div id="profileContainer">
+
+        <form style="width:50%;" action="/write" method="POST">
+          <p id="messageError">Please enter Phone number and Message.</p>
+          <div class="form-group">
+            <label for="phone_number">Phone number:</label>
+            <input type="number" class="form-control" id="phone_number" required="required">
+          </div>
+          <div class="form-group">
+            <label for="message">Message:</label>
+            <input type="text" class="form-control" id="message" required="required">
+          </div>
+
+          <button type="button" class="btn btn-default" id="message_submit">Submit</button>
+        </form>
+        <hr/>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>user</th>
+              <th>phone</th>
+              <th>message</th>
+            </tr>
+          </thead>
+          <tbody id="profileTbody">
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
